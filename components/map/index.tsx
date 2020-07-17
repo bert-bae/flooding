@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactMapGL from 'react-map-gl';
 
+import MapControls from './map-controls';
 import MapNavigation from './map-navigation';
 import GeoLocate from './geo-locate';
 
@@ -21,8 +22,7 @@ const Map = () => {
         mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
         onViewportChange={(nextView) => setViewport(nextView)}
       >
-        <MapNavigation />
-        <GeoLocate />
+        <MapControls />
       </ReactMapGL>
     </div>
   );
