@@ -13,9 +13,14 @@ const Map = () => {
     latitude: 37.7577,
     longitude: -122.4376,
   });
+
   const [longitude, setLongitude] = useState(null);
   const [latitiude, setLatitude] = useState(null);
   const [pointElevation, setPointElevation] = useState(null);
+
+  useEffect(() => {
+    console.log(pointElevation);
+  }, [longitude, latitiude]);
 
   return (
     <div className="container map-container">
@@ -24,7 +29,7 @@ const Map = () => {
         mapStyle={process.env.NEXT_PUBLIC_MAPBOX_STYLE}
         mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
         maxZoom={15}
-        minZoom={12}
+        minZoom={10}
         onViewportChange={(nextView) => {
           setViewport(nextView);
         }}
