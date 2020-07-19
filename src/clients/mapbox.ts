@@ -1,7 +1,11 @@
+//@ts-ignore
+
 import axios from 'axios';
 import { get } from 'lodash';
 import { replaceString } from '../utils/string-replace';
 import { ICoordinates } from '../types/mapbox-types';
+
+import * as config from '../config/env-config.json';
 
 const endpoints = {
   getTerrain: '/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw@2x',
@@ -26,7 +30,7 @@ const appendAccessToken = (url: string) => {
     result += '?';
   }
 
-  return `${result}access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`;
+  return `${result}access_token=${config.MAPBOX_API_URL}`;
 };
 
 const getTileQueryElevation = async (longitude: number, latitude: number) => {
@@ -39,7 +43,7 @@ const getTileQueryElevation = async (longitude: number, latitude: number) => {
     const data = get(await client.get(endpoint), 'data');
     const elevations = [];
 
-    data.features.forEach((set) => {
+    data.features.forEach((set: { properties: { ele: number } }) => {
       elevations.push(set.properties.ele);
     });
 

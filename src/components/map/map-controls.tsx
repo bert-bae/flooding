@@ -1,13 +1,14 @@
-import { GeolocateControl, NavigationControl } from 'react-map-gl';
+import * as React from 'react';
+import * as ReactMapGl from 'react-map-gl';
 
 const MapControls = () => {
   return (
     <div className="map-controls-container">
-      <GeolocateControl
+      <ReactMapGl.GeolocateControl
         positionOptions={{ enableHighAccuracy: true }}
         trackUserLocation={true}
       />
-      <NavigationControl />
+      <ReactMapGl.NavigationControl />
     </div>
   );
 };

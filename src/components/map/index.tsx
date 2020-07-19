@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import ReactMapGL from 'react-map-gl';
 
 import MapControls from './map-controls';
 import ElevationLegend from './elevation-legend';
+// import mapBoxClient from '../../clients/mapbox';
 
-import mapBoxClient from '../../clients/mapbox';
+import { IViewport } from '../../types/mapbox-types';
+import * as config from '../../config/env-config.json';
 
 const Map = () => {
   const [viewport, setViewport] = useState({
@@ -26,12 +29,12 @@ const Map = () => {
     <div className="map-container">
       <ReactMapGL
         {...viewport}
-        mapStyle={process.env.NEXT_PUBLIC_MAPBOX_STYLE}
-        mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
+        mapStyle={config.MAPBOX_STYLE}
+        mapboxApiAccessToken={config.MAPBOX_ACCESS_TOKEN}
         maxZoom={15}
         minZoom={10}
         onViewportChange={(nextView) => {
-          setViewport(nextView);
+          // setViewport(nextView);
         }}
         // onClick={async (event) => {
         //   setLongitude(event.lngLat[0]);
