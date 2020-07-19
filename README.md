@@ -5,3 +5,9 @@ This web application utilises MapBox GL and a custom layer to showcase the impac
 # Example
 
 Checkout `./example` folder for a screenshot showcasing the map.
+
+# Stack
+
+NextJs
+Mapbox GL
+Mapbox Studio (Custom Layer)

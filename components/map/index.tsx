@@ -33,16 +33,16 @@ const Map = () => {
         onViewportChange={(nextView) => {
           setViewport(nextView);
         }}
-        onClick={async (event) => {
-          setLongitude(event.lngLat[0]);
-          setLatitude(event.lngLat[1]);
-          setPointElevation(
-            await mapBoxClient.getTileQueryElevation(
-              event.lngLat[0],
-              event.lngLat[1]
-            )
-          );
-        }}
+        // onClick={async (event) => {
+        //   setLongitude(event.lngLat[0]);
+        //   setLatitude(event.lngLat[1]);
+        //   setPointElevation(
+        //     await mapBoxClient.getTileQueryElevation(
+        //       event.lngLat[0],
+        //       event.lngLat[1]
+        //     )
+        //   );
+        // }}
       >
         <ElevationLegend />
         <MapControls />
