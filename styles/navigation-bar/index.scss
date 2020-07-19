@@ -1,0 +1,14 @@
+.navigation-bar {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  padding: 15px;
+  .app-title {
+    font-size: 36px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}

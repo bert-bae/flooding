@@ -23,7 +23,7 @@ const Map = () => {
   }, [longitude, latitiude]);
 
   return (
-    <div className="container map-container">
+    <div className="map-container">
       <ReactMapGL
         {...viewport}
         mapStyle={process.env.NEXT_PUBLIC_MAPBOX_STYLE}
