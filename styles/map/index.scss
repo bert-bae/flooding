@@ -37,7 +37,7 @@ $one-hundred-m: #ffffff;
 
   .legend-indicator {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 3px;
     .indicator {
@@ -45,6 +45,7 @@ $one-hundred-m: #ffffff;
       width: 15px;
       border-radius: 5px;
       margin-right: 3px;
+      border: 1px solid black;
       &.ten-m {
         background-color: $ten-m;
       }

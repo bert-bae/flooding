@@ -35,4 +35,8 @@ export const elevationIndicators = [
     numerical: 90,
     text: 'ninty',
   },
+  {
+    numerical: 100,
+    text: 'one-hundred',
+  },
 ];
