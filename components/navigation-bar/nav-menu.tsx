@@ -3,8 +3,8 @@ import { useState } from 'react';
 const NavMenu = () => {
   const [toggle, setToggle] = useState(false);
 
-  const toggler = (current) => {
-    return setToggle(!current);
+  const toggler = (current: boolean): void => {
+    setToggle(!current);
   };
 
   return (
