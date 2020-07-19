@@ -3,3 +3,8 @@ export interface ICoordinates {
   y: number;
   z: number;
 }
+
+export interface ILngLat {
+  longitude: number;
+  latitide: number;
+}

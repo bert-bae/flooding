@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import ReactMapGL from 'react-map-gl';
 
 import MapControls from './map-controls';
+import ElevationLegend from './elevation-legend';
 
 import mapBoxClient from '../../clients/mapbox';
 
@@ -11,30 +12,34 @@ const Map = () => {
     height: '100%',
     latitude: 37.7577,
     longitude: -122.4376,
-    zoom: 8,
   });
-
-  useEffect(() => {
-    (async () => {
-      return mapBoxClient.getTerrainData({
-        x: viewport.latitude,
-        y: viewport.longitude,
-        z: viewport.zoom,
-      });
-    })();
-  }, [viewport]);
+  const [longitude, setLongitude] = useState(null);
+  const [latitiude, setLatitude] = useState(null);
+  const [pointElevation, setPointElevation] = useState(null);
 
   return (
     <div className="container map-container">
       <ReactMapGL
         {...viewport}
-        mapStyle="mapbox://styles/mapbox/dark-v10"
+        mapStyle={process.env.NEXT_PUBLIC_MAPBOX_STYLE}
         mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
+        maxZoom={15}
+        minZoom={12}
         onViewportChange={(nextView) => {
-          console.log(nextView);
           setViewport(nextView);
         }}
+        onClick={async (event) => {
+          setLongitude(event.lngLat[0]);
+          setLatitude(event.lngLat[1]);
+          setPointElevation(
+            await mapBoxClient.getTileQueryElevation(
+              event.lngLat[0],
+              event.lngLat[1]
+            )
+          );
+        }}
       >
+        <ElevationLegend />
         <MapControls />
       </ReactMapGL>
     </div>
