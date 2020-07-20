@@ -4,7 +4,6 @@ const webpack = require('webpack');
 module.exports = {
   entry: './src/index.tsx',
   target: 'web',
-  mode: 'development',
   module: {
     rules: [
       {

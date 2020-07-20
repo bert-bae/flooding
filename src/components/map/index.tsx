@@ -1,29 +1,30 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import ReactMapGL from 'react-map-gl';
 
+import Context from '../../context';
 import MapControls from './map-controls';
 import ElevationLegend from './elevation-legend';
+import CoordinateSearch from './coordinate-search';
 // import mapBoxClient from '../../clients/mapbox';
 
 import { IViewport } from '../../types/mapbox-types';
 import * as config from '../../config/env-config.json';
 
 const Map = () => {
-  const [viewport, setViewport] = useState({
+  const [context, setContext] = React.useContext(Context);
+  const [viewport, setViewport] = React.useState({
     width: '100%',
     height: '100%',
     latitude: 37.7577,
     longitude: -122.4376,
   });
 
-  const [longitude, setLongitude] = useState(null);
-  const [latitiude, setLatitude] = useState(null);
-  const [pointElevation, setPointElevation] = useState(null);
-
-  useEffect(() => {
-    console.log(pointElevation);
-  }, [longitude, latitiude]);
+  React.useEffect(() => {
+    setContext({
+      latitude: 37.7577,
+      longitude: -122.4376,
+    });
+  }, []);
 
   return (
     <div className="map-container">
@@ -33,20 +34,15 @@ const Map = () => {
         mapboxApiAccessToken={config.MAPBOX_ACCESS_TOKEN}
         maxZoom={15}
         minZoom={10}
-        onViewportChange={(nextView) => {
-          // setViewport(nextView);
+        onViewportChange={(nextView: IViewport): void => {
+          setContext({
+            longitude: nextView.longitude,
+            latitude: nextView.latitude,
+          });
+          setViewport(nextView);
         }}
-        // onClick={async (event) => {
-        //   setLongitude(event.lngLat[0]);
-        //   setLatitude(event.lngLat[1]);
-        //   setPointElevation(
-        //     await mapBoxClient.getTileQueryElevation(
-        //       event.lngLat[0],
-        //       event.lngLat[1]
-        //     )
-        //   );
-        // }}
       >
+        <CoordinateSearch />
         <ElevationLegend />
         <MapControls />
       </ReactMapGL>
