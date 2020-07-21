@@ -10,19 +10,23 @@ import CoordinateSearch from './coordinate-search';
 import { IViewport } from '../../types/mapbox-types';
 import * as config from '../../config/env-config.json';
 
+const MAX_ZOOM = 14;
+const MIN_ZOOM = 12;
+
 const Map = () => {
   const [context, setContext] = React.useContext(Context);
   const [viewport, setViewport] = React.useState({
     width: '100%',
     height: '100%',
-    latitude: 37.7577,
-    longitude: -122.4376,
+    latitude: 49.285743,
+    longitude: -123.125348,
+    zoom: MAX_ZOOM,
   });
 
   React.useEffect(() => {
     setContext({
-      latitude: 37.7577,
-      longitude: -122.4376,
+      latitude: 49.285743,
+      longitude: -123.125348,
     });
   }, []);
 
@@ -32,8 +36,8 @@ const Map = () => {
         {...viewport}
         mapStyle={config.MAPBOX_STYLE}
         mapboxApiAccessToken={config.MAPBOX_ACCESS_TOKEN}
-        maxZoom={15}
-        minZoom={10}
+        minZoom={MIN_ZOOM}
+        maxZoom={MAX_ZOOM}
         onViewportChange={(nextView: IViewport): void => {
           setContext({
             longitude: nextView.longitude,
