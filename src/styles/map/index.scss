@@ -1,0 +1,26 @@
+$ten-m: #007fff;
+$twenty-m: #00ff95;
+$thirty-m: #40ff00;
+$forty-m: #bfff00;
+$fifty-m: #ffff00;
+$sixty-m: #ffbf00;
+$seventy-m: #ff8000;
+$eighty-m: #ff4d00;
+$ninty-m: #ff0000;
+$one-hundred-m: #ffffff;
+
+@import './coordinate-search.scss';
+@import './elevation-legend.scss';
+
+.map-container {
+  height: 100%;
+  width: 100%;
+}
+
+.map-controls-container {
+  position: absolute;
+  bottom: 45px;
+  right: 15px;
+  display: grid;
+  grid-gap: 15px;
+}
