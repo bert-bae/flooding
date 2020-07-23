@@ -25,10 +25,10 @@ const Map = () => {
 
   React.useEffect(() => {
     setContext({
-      latitude: 49.285743,
-      longitude: -123.125348,
+      latitude: viewport.latitude,
+      longitude: viewport.longitude,
     });
-  }, []);
+  }, [viewport]);
 
   return (
     <div className="map-container">
@@ -39,10 +39,6 @@ const Map = () => {
         minZoom={MIN_ZOOM}
         maxZoom={MAX_ZOOM}
         onViewportChange={(nextView: IViewport): void => {
-          setContext({
-            longitude: nextView.longitude,
-            latitude: nextView.latitude,
-          });
           setViewport(nextView);
         }}
       >

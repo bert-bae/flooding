@@ -41,7 +41,6 @@
     "react-hot-loader": "^4.12.6",
     "sass": "^1.26.10",
     "sass-loader": "^8.0.2",
-    "source-map-loader": "^1.0.1",
     "style-loader": "^0.23.0",
     "typescript": "^3.9.7",
     "webpack": "^4.43.0",
