@@ -37,7 +37,7 @@
     "babel-loader": "^8.0.2",
     "css-loader": "^1.0.1",
     "html-webpack-plugin": "^4.3.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react-hot-loader": "^4.12.6",
     "sass": "^1.26.10",
     "sass-loader": "^8.0.2",
