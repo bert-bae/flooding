@@ -1,14 +1,14 @@
-import * as React from 'react';
-import ReactMapGL from 'react-map-gl';
+import * as React from "react";
+import ReactMapGL from "react-map-gl";
 
-import Context from '../../context';
-import MapControls from './map-controls';
-import ElevationLegend from './elevation-legend';
-import CoordinateSearch from './coordinate-search';
+import Context from "../../context";
+import MapControls from "./map-controls";
+import ElevationLegend from "./elevation-legend";
+import CoordinateSearch from "./coordinate-search";
 // import mapBoxClient from '../../clients/mapbox';
 
-import { IViewport } from '../../types/mapbox-types';
-import * as config from '../../config/env-config.json';
+import { IViewport } from "../../types/mapbox-types";
+import * as config from "../../config/env-config.json";
 
 const MAX_ZOOM = 14;
 const MIN_ZOOM = 12;
@@ -16,8 +16,8 @@ const MIN_ZOOM = 12;
 const Map = () => {
   const [context, setContext] = React.useContext(Context);
   const [viewport, setViewport] = React.useState({
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
     latitude: 49.285743,
     longitude: -123.125348,
     zoom: MAX_ZOOM,
